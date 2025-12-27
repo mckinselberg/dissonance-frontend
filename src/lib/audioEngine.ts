@@ -34,7 +34,7 @@ export class MasterVolumeNode implements AudioChainNode {
   input: GainNode;
   output: GainNode;
   private gainNode: GainNode;
-  private bypassed = false;
+  // private bypassed = false;
 
   constructor(private audioContext: AudioContext, initialVolume: number = 0.3) {
     this.input = audioContext.createGain();
@@ -75,7 +75,7 @@ export class MasterVolumeNode implements AudioChainNode {
   }
 
   bypass(bypassed: boolean): void {
-    this.bypassed = bypassed;
+  // this.bypassed = bypassed;
     if (bypassed) {
       this.gainNode.gain.value = 1; // Unity gain when bypassed
     }
@@ -99,9 +99,9 @@ export class ParametricEQNode implements AudioChainNode {
   private lowBand: BiquadFilterNode;
   private midBand: BiquadFilterNode;
   private highBand: BiquadFilterNode;
-  private bypassed = false;
+  // private bypassed = false;
 
-  constructor(private audioContext: AudioContext) {
+  constructor(audioContext: AudioContext) {
     this.input = audioContext.createGain();
     this.output = audioContext.createGain();
 
@@ -200,7 +200,7 @@ export class ParametricEQNode implements AudioChainNode {
   }
 
   bypass(bypassed: boolean): void {
-    this.bypassed = bypassed;
+  // this.bypassed = bypassed;
     if (bypassed) {
       this.lowBand.gain.value = 0;
       this.midBand.gain.value = 0;
@@ -220,7 +220,7 @@ export class ConvolutionReverbNode implements AudioChainNode {
   private dryGain: GainNode;
   private wetGain: GainNode;
   private convolver: ConvolverNode;
-  private bypassed = false;
+  // private bypassed = false;
 
   constructor(
     private audioContext: AudioContext,
@@ -314,7 +314,7 @@ export class ConvolutionReverbNode implements AudioChainNode {
   }
 
   bypass(bypassed: boolean): void {
-    this.bypassed = bypassed;
+  // this.bypassed = bypassed;
     if (bypassed) {
       this.dryGain.gain.value = 1;
       this.wetGain.gain.value = 0;
@@ -336,7 +336,7 @@ export interface ADSREnvelope {
 export class EnvelopeGenerator {
   private audioContext: AudioContext;
   private gainNode: GainNode;
-  private releaseTimeout: number | null = null;
+  // private releaseTimeout: number | null = null;
 
   constructor(audioContext: AudioContext) {
     this.audioContext = audioContext;
@@ -425,7 +425,7 @@ export class MultiModeFilterNode implements AudioChainNode {
   output: GainNode;
   
   private filter: BiquadFilterNode;
-  private bypassed = false;
+  // private bypassed = false;
 
   constructor(
     private audioContext: AudioContext,
@@ -510,7 +510,7 @@ export class MultiModeFilterNode implements AudioChainNode {
   }
 
   bypass(bypassed: boolean): void {
-    this.bypassed = bypassed;
+  // this.bypassed = bypassed;
     // dk:perf When bypassed, set filter to allpass mode (no coloration)
     if (bypassed) {
       this.filter.type = 'allpass';

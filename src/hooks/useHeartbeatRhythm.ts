@@ -56,7 +56,7 @@ export function useHeartbeatRhythm(
   const lastPacketTime = useRef(0);
   const expectedBeatTime = useRef(0);
   const beatHistory = useRef<HeartbeatEvent[]>([]);
-  const rhythmInterval = useRef<number>();
+  const rhythmInterval = useRef<number | undefined>(undefined);
   
   // Audio nodes for rhythm sounds
   const kickOscRef = useRef<OscillatorNode | null>(null);

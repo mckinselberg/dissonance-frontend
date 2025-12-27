@@ -82,8 +82,8 @@ export const MusicClockAnimation: React.FC<MusicClockAnimationProps> = ({
     if (!ctx) return;
     
     const analyser = analyserRef.current;
-    const bufferLength = analyser.frequencyBinCount;
-    const dataArray = new Uint8Array(bufferLength) as Uint8Array<ArrayBuffer>;
+  const bufferLength = analyser.frequencyBinCount;
+  const dataArray = new Uint8Array(bufferLength);
     
     const startTime = Date.now();
     
@@ -184,7 +184,7 @@ function drawWaveform(
   height: number,
   color: string
 ) {
-  analyser.getByteTimeDomainData(dataArray);
+  analyser.getByteTimeDomainData(dataArray as Uint8Array<ArrayBuffer>);
   
   ctx.lineWidth = 2;
   ctx.strokeStyle = color;
@@ -221,7 +221,7 @@ function drawFrequency(
   height: number,
   color: string
 ) {
-  analyser.getByteFrequencyData(dataArray);
+  analyser.getByteFrequencyData(dataArray as Uint8Array<ArrayBuffer>);
   
   const barCount = 64; // Number of bars to display
   const barWidth = width / barCount;
@@ -255,7 +255,7 @@ function drawCircular(
   color: string,
   elapsed: number
 ) {
-  analyser.getByteTimeDomainData(dataArray);
+  analyser.getByteTimeDomainData(dataArray as Uint8Array<ArrayBuffer>);
   
   const centerX = width / 2;
   const centerY = height / 2;
@@ -299,7 +299,7 @@ function drawPulse(
   color: string,
   elapsed: number
 ) {
-  analyser.getByteFrequencyData(dataArray);
+  analyser.getByteFrequencyData(dataArray as Uint8Array<ArrayBuffer>);
   
   // Calculate average amplitude (simple beat detection)
   let sum = 0;

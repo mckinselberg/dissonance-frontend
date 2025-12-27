@@ -162,11 +162,10 @@ export const DeveloperDashboard: React.FC = () => {
               overflowY: 'auto'
             }}
           >
-            <div>Agents: {gameState.agents?.length || 0}</div>
+            <div>Agents: {gameState.agents ? Object.keys(gameState.agents).length : 0}</div>
             <div>Nodes: {gameState.nodes?.length || 0}</div>
             <div>Risk Score: {(gameState.risk_score * 100).toFixed(1)}%</div>
             <div>Recent Events: {gameState.events?.length || 0}</div>
-            
             {gameState.events && gameState.events.length > 0 && (
               <div style={{ marginTop: '10px', paddingTop: '10px', borderTop: '1px solid #004400' }}>
                 <div style={{ fontWeight: 'bold', marginBottom: '5px' }}>Last Event:</div>

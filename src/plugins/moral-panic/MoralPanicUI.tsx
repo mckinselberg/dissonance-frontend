@@ -1,3 +1,6 @@
+interface KidDashboardProps {
+  playerState: PlayerState;
+}
 /**
  * UI Components for Moral Panic game mode
  * 
@@ -36,7 +39,7 @@ export const MoralPanicDashboard: React.FC<MoralPanicDashboardProps> = ({
   } else if (playerState.roleType === 'musician') {
     return <MusicianDashboard gameState={gameState} playerState={playerState} />;
   } else {
-    return <KidDashboard gameState={gameState} playerState={playerState} />;
+  return <KidDashboard playerState={playerState} />;
   }
 };
 
@@ -45,7 +48,7 @@ export const MoralPanicDashboard: React.FC<MoralPanicDashboardProps> = ({
 // ============================================================================
 
 const AuthorityDashboard: React.FC<MoralPanicDashboardProps> = ({
-  gameState: _gameState,
+  gameState,
   playerState
 }) => {
   if (playerState.roleType !== 'authority') return null;
@@ -96,7 +99,6 @@ const AuthorityDashboard: React.FC<MoralPanicDashboardProps> = ({
 // ============================================================================
 
 const MusicianDashboard: React.FC<MoralPanicDashboardProps> = ({
-  gameState: _gameState,
   playerState
 }) => {
   if (playerState.roleType !== 'musician') return null;
@@ -146,10 +148,7 @@ const MusicianDashboard: React.FC<MoralPanicDashboardProps> = ({
 // KID DASHBOARD
 // ============================================================================
 
-const KidDashboard: React.FC<MoralPanicDashboardProps> = ({
-  gameState,
-  playerState
-}) => {
+const KidDashboard: React.FC<KidDashboardProps> = ({ playerState }) => {
   if (playerState.roleType !== 'kid') return null;
   
   const corruption = playerState.resources.corruption;

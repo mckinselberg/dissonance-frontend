@@ -5,7 +5,7 @@
  */
 
 import { useState } from 'react';
-import { OpeningQuote } from './components/OpeningQuote';
+import { OpeningQuote } from './OpeningQuote';
 // ... your other imports
 
 function App() {
