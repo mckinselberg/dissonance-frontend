@@ -21,53 +21,59 @@ export default defineConfig([
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
+      # dissonance-frontend
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+      A modern React (TypeScript) frontend for the Dissonance project, built with Vite.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+      ## Features
+      - Modular React components
+      - TypeScript for type safety
+      - Vite for fast development and builds
+      - Custom hooks and plugin architecture
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+      ## Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+      ### Prerequisites
+      - Node.js (18+ recommended)
+      - npm (comes with Node.js)
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+      ### Installation
+      ```sh
+      npm install
+      ```
+
+      ### Development
+      ```sh
+      npm run dev
+      ```
+
+      ### Build
+      ```sh
+      npm run build
+      ```
+
+      ### Lint
+      ```sh
+      npm run lint
+      ```
+
+      ### Preview Production Build
+      ```sh
+      npm run preview
+      ```
+
+      ## Project Structure
+      - `src/components/` — React UI components
+      - `src/hooks/` — Custom React hooks
+      - `src/lib/` — Core libraries and utilities
+      - `src/plugins/` — Feature plugins
+      - `src/shared/` — Shared code (e.g., theme)
+      - `public/` — Static assets
+
+      ## Contributing
+      1. Fork the repo and create your branch from `main`.
+      2. Commit your changes with clear messages.
+      3. Push to your fork and submit a pull request.
+
+      ## License
+      MIT
